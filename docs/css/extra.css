@@ -1,0 +1,57 @@
+@media only screen and (min-width: 76.25em) {
+  .md-main__inner {
+    max-width: 70%;
+  }
+  .md-sidebar--primary {
+    left: 0;
+  }
+  .md-sidebar--secondary {
+    right: 0;
+    margin-left: 0;
+    -webkit-transform: none;
+    transform: none;   
+  }
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+ background-color:var(--md-admonition-bg-color);
+ border:.05rem solid #009485;
+ border-radius:.2rem;
+ box-shadow:var(--md-shadow-z1);
+ color:var(--md-admonition-fg-color);
+ display:flow-root;
+ font-size:.64rem;
+ margin:1.5625em 0;
+ padding:0 .6rem;
+ page-break-inside:avoid
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+ background-color:#44ffb61a;
+ border:none;
+ font-weight:700;
+ margin:0 -.6rem;
+ padding-bottom:.4rem;
+ padding-top:.4rem;
+ position:relative
+}
+
+.md-typeset .admonition-title:before,
+.md-typeset summary:before {
+ background-color:#009485;
+ content:"";
+ height:1rem;
+ -webkit-mask-image:var(--md-admonition-icon--note);
+ mask-image:var(--md-admonition-icon--note);
+ -webkit-mask-position:center;
+ mask-position:center;
+ -webkit-mask-repeat:no-repeat;
+ mask-repeat:no-repeat;
+ -webkit-mask-size:contain;
+ mask-size:contain;
+ position:absolute;
+ top:.625em;
+ width:1rem
+}
