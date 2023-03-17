@@ -2,7 +2,6 @@ site_name: Stratos Documentation
 site_url: https://xenthox.github.io/mkdocs
 theme:
   name: material
-  custom_dir: overrides
   font:
     text: Roboto
   logo: assets/logo.png
@@ -50,6 +49,7 @@ nav:
 
 plugins:
   - search
+  - social
 
 extra:
   social:
