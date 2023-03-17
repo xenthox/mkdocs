@@ -49,7 +49,7 @@ nav:
 
 plugins:
   - search
-  - social
+#  - social
 
 extra:
   social:

@@ -5,6 +5,7 @@ hide:
   - navigation
 ---
 
+#
 
 <p style="text-align: center; font-size:400%;">Stratos Network</p>
 <p style="text-align: center; font-size:180%;">- The Next Generation of ‍‍Decentralized Data Mesh -</p><br>
