@@ -1,15 +1,17 @@
-site_name: test
+site_name: Stratos Documentation
 site_url: https://xenthox.github.io/mkdocs
 theme:
   name: material
+  custom_dir: overrides
   font:
     text: Roboto
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
 
   features:
-  #  - navigation.tabs
-  #  - navigation.tabs.sticky
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
- #   - toc.integrate
     - navigation.top
     - search.suggest
     - search.share
@@ -24,24 +26,30 @@ theme:
       accent: teal
 
 nav:
-  - Welcome: index.md
-  - Incentive Testnet:
-    - Introduction: testnet-introduction.md
-    - Full-Chain Node: setup-and-run-a-stratos-chain-full-node.md
-    - Become a Validator: how-to-become-a-validator.md
-    - SDS Resource Node: setup-and-run-a-sds-resource-node.md
-  - Stratos Full-Chain:
-    - stchaind Commands Part 1: stchaind-commands-part-1.md
-    - stchaind Commands Part 2: stchaind-commands-part-2.md
-    - gRPC Queries: stratos-chain-grpc-queries.md
-    - REST APIs: stratos-chain-rest-apis.md
-  - Stratos Resource Node:
-    - ppd Commands: ppd-terminal-subcommands.md
-    - SDS RPC: sds-rpc-for-file-operation.md
+  - Home: index.md
+  - Testnet:
+    - Introduction: docs-testnet/introduction.md
+    - Changes in Tropos-5: docs-testnet/tropos-5-changes.md
+    - Rewards Distribution: docs-testnet/incentive-rewards-distribution.md
+    - Migrate Rewards: docs-testnet/migrate-rewards.md
+  - Validator Node:
+    - HOWTOs:
+      - Full-Chain Node: docs-validator-node/setup-and-run-a-stratos-chain-full-node.md
+      - Become a Validator: docs-validator-node/how-to-become-a-validator.md
+    - Operating:
+      - stchaind Commands Part 1: docs-validator-node/stchaind-commands-part-1.md
+      - stchaind Commands Part 2: docs-validator-node/stchaind-commands-part-2.md
+      - gRPC Queries: docs-validator-node/stratos-chain-grpc-queries.md
+      - REST APIs: docs-validator-node/stratos-chain-rest-apis.md
+  - Resource Node:
+    - HOWTOs:
+      - SDS Resource Node: docs-resource-node/setup-and-run-a-sds-resource-node.md
+    - Operating:
+      - ppd Commands: docs-resource-node/ppd-terminal-subcommands.md
+      - SDS RPC: docs-resource-node/sds-rpc-for-file-operation.md
 
 plugins:
   - search
-  - social
 
 extra:
   social:
@@ -77,10 +85,11 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - admonition
   - meta
+  - tables
 
 extra_css:
   - css/extra.css
 extra_javascript:
   - js/extra.js        
 
-copyright: Copyright
+copyright: <p> &copy; 2021-<script>document.write(new Date().getFullYear())</script> Stratos</p>

@@ -1,6 +1,8 @@
 ---
 title: Welcome
 description: The Stratos Network official documentation page for SDS and Stratos-chain.
+hide:
+  - navigation
 ---
 
 
@@ -9,6 +11,8 @@ description: The Stratos Network official documentation page for SDS and Stratos
 <p style="text-align: center; font-size:120%;">SDS & Stratos-chain<br>Official Documentation</p>
 
 <br><br><br><br><br><br><br><br><br>
+
+
 
 ---
 
