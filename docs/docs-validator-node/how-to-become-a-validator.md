@@ -34,7 +34,7 @@ If the active validators double sign, are frequently offline or do not participa
 ---
 
 ## Becoming a validator
-In order to become a validator, First you have installed and run a Stratos-chain full-node. You can [setup your full-node](https://github.com/stratosnet/sds/wiki/Tropos-Incentive-Testnet#Topics) if you haven't yet.
+In order to become a validator, First you have installed and run a Stratos-chain full-node. You can [setup your full-node](../setup-and-run-a-stratos-chain-full-node/) if you haven't yet.
 
 The following instructions assume you have successfully run a Stratos-chain full-node and followed our instructions by default.
 
@@ -44,12 +44,15 @@ The following instructions assume you have successfully run a Stratos-chain full
 
 ## Connect to Stratos-chain Testnet
 
-Please refer to [Tropos Incentive Testnet](https://github.com/stratosnet/sds/wiki/Tropos-Incentive-Testnet#Topics) to:
+Please refer to [full-node setup guide](../setup-and-run-a-stratos-chain-full-node/) to:
 
-- :material-check: download related files
-- :material-check: start your Stratos-chain full-node and catch up to the latest block height(synchronization)
-- :material-check: create your Stratos-chain Wallet
-- :material-check: `Faucet` or `send` an amount of tokens to this wallet
+:material-check: download related files
+
+:material-check: start your Stratos-chain full-node and catch up to the latest block height(synchronization)
+
+:material-check: create your Stratos-chain Wallet
+
+:material-check: `Faucet` or `send` an amount of tokens to this wallet
 
 <br>
 
@@ -110,13 +113,15 @@ After the node has finished sync, your Stratos-chain wallet has been created and
     * `priv_validator_state.json`holds the validator's state
 
 In Linux:
-```shell
+
+``` { .yaml .no-copy }
 echo $HOME
 /home/<your login name>
 ```
 
 In Mac:
-```shell
+
+``` { .yaml .no-copy }
 echo $HOME
 /Users/<your login name>
 ```
@@ -129,7 +134,7 @@ echo $HOME
 ## Check your wallet account balance and account type
 
 ``` { .yaml .no-copy }
-./stchaind query bank balances st1pvyjzlhwrpgklu0044at4t6qh7m23k3kr2gsjh
+stchaind query bank balances st1pvyjzlhwrpgklu0044at4t6qh7m23k3kr2gsjh
 balances:
 - amount: "1000000000000000"
   denom: utros
@@ -142,7 +147,7 @@ pagination:
 
 
 ``` { .yaml .no-copy }
-./stchaind query account st1pvyjzlhwrpgklu0044at4t6qh7m23k3kr2gsjh
+stchaind query account st1pvyjzlhwrpgklu0044at4t6qh7m23k3kr2gsjh
 |
 '@type': /cosmos.auth.v1beta1.BaseAccount
 account_number: "0"
@@ -168,7 +173,7 @@ To get the node public key, run the following command under your node folder.
 ```shell
 # Make sure we are inside the home directory
 cd $HOME
-./stchaind tendermint show-validator
+stchaind tendermint show-validator
 
 # expected output
 {"@type":"/cosmos.crypto.ed25519.PubKey","key":"69gothWTE9FJBZ5gBjjSNhg8y/5SsI1hBaD81Dum7lo="}
@@ -200,7 +205,7 @@ A validator can be crested by sending a `create-validator` transaction command
 
 Example:
 ```shell
-$ ./stchaind tx staking create-validator \
+stchaind tx staking create-validator \
 --amount=100stos \
 --pubkey='{"@type":"/cosmos.crypto.ed25519.PubKey","key":"JwtmYzaX0b+zjuDypUI2+qy8wa/LFtUUUg0+vr11tpg="}' \
 --moniker="myValidator" \
@@ -250,7 +255,7 @@ In the response of `query staking validators` command in next step, the value of
 ### View all validators
 
 ``` { .yaml .no-copy }
-./stchaind query staking validators
+stchaind query staking validators
 - |
 pagination:
   next_key: null
@@ -284,11 +289,11 @@ validators:
 ### View a specific validator
 
 ```shell
-./stchaind query staking validator <your_validator_operator_address>
+stchaind query staking validator <your_validator_operator_address>
 ```
 
 ``` { .yaml .no-copy }
-./stchaind query staking validator stvaloper1pvyjzlhwrpgklu0044at4t6qh7m23k3k5xpswu
+stchaind query staking validator stvaloper1pvyjzlhwrpgklu0044at4t6qh7m23k3k5xpswu
 |
 commission:
   commission_rates:
@@ -339,7 +344,7 @@ We listed some examples of commonly used commands for validators
 
 <br>
 
-### [`staking` module](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-%60stchaind%60-Commands(part1)#staking-module)
+### - `staking` module
 
   responsible for the proof of stake (PoS) layer of the Stratos-chain. It contains create/edit validator as well as delegation operations.
 
@@ -350,7 +355,7 @@ We listed some examples of commonly used commands for validators
 Example:
 
 ```shell
-./stchaind tx staking create-validator \
+stchaind tx staking create-validator \
 --amount=100stos \
 --pubkey='{"@type":"/cosmos.crypto.ed25519.PubKey","key":"JwtmYzaX0b+zjuDypUI2+qy8wa/LFtUUUg0+vr11tpg="}' \
 --moniker="myValidator" \
@@ -369,7 +374,7 @@ Example:
 Example:
 
 ```shell
-./stchaind tx staking edit-validator \
+stchaind tx staking edit-validator \
 --from=user0 \
 --keyring-backend=test \
 --min-self-delegation=100  \
@@ -384,7 +389,7 @@ Example:
 Example:
 
 ```shell
-./stchaind tx staking delegate stvaloper1fmdh9vf262qxe5ehmp9jvgkqzaeye4qmxjrr3k 1000gwei \
+stchaind tx staking delegate stvaloper1fmdh9vf262qxe5ehmp9jvgkqzaeye4qmxjrr3k 1000gwei \
 --from=st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda \
 --chain-id=tropos-5  --keyring-backend=test --gas=auto --gas-prices=1000000000wei
 ```
@@ -396,7 +401,7 @@ Example:
 Example:
 
 ```shell
-./stchaind tx staking unbond stvaloper12adksjsd7gcsn23h5jmvdygzx2lfw5q4pyf57u 10000gwei \
+stchaind tx staking unbond stvaloper12adksjsd7gcsn23h5jmvdygzx2lfw5q4pyf57u 10000gwei \
 --from=st12adksjsd7gcsn23h5jmvdygzx2lfw5q4kgq5zh 
 --chain-id=tropos-5  --keyring-backend=test --gas=auto --gas-prices=1000000000wei -y
 ```
@@ -408,7 +413,7 @@ Example:
 Example:
 
 ```shell
-./stchaind query staking delegations st1pvyjzlhwrpgklu0044at4t6qh7m23k3kr2gsjh
+stchaind query staking delegations st1pvyjzlhwrpgklu0044at4t6qh7m23k3kr2gsjh
 ```
 
 <br>
@@ -418,7 +423,7 @@ Example:
 Example:
 
 ```shell
-./stchaind query staking validator stvaloper1pvyjzlhwrpgklu0044at4t6qh7m23k3k5xpswu
+stchaind query staking validator stvaloper1pvyjzlhwrpgklu0044at4t6qh7m23k3k5xpswu
 ```
 
 <br>
@@ -428,12 +433,12 @@ Example:
 Example:
 
 ```shell
-./stchaind query staking pool
+stchaind query staking pool
 ``` 
 
 <br>
 
-### [`distribution` module](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-%60stchaind%60-Commands(part1)#distribution-module)
+### - `distribution` module
 
 Responsible for distributing staking rewards between validators, delegators, and the Community Pool. It contains operations to claim rewards form a validator and specially, query all slashes of a validator. You cannot withdraw a part of reward. Every time you withdraw, all reward will be withdrawn.
 
@@ -444,7 +449,7 @@ Responsible for distributing staking rewards between validators, delegators, and
 Example:
 
 ```shell
-./stchaind tx distribution withdraw-rewards stvaloper1fmdh9vf262qxe5ehmp9jvgkqzaeye4qmxjrr3k \
+stchaind tx distribution withdraw-rewards stvaloper1fmdh9vf262qxe5ehmp9jvgkqzaeye4qmxjrr3k \
 --from=st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda \
 --chain-id=tropos-5  --keyring-backend=test --gas=auto --gas-prices=1000000000wei -y
 ```
@@ -456,7 +461,7 @@ Example:
 Example:
 
 ```shell
-./stchaind tx distribution withdraw-all-rewards \
+stchaind tx distribution withdraw-all-rewards \
 --from=st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda \
 --chain-id=tropos-5  --keyring-backend=test --gas=auto --gas-prices=1000000000wei -y
 ```
@@ -468,7 +473,7 @@ Example:
 Example:
 
 ```shell
-./stchaind query distribution rewards st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda --height=9765
+stchaind query distribution rewards st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda --height=9765
 ```
 
 <br>
@@ -478,7 +483,7 @@ Example:
 Example:
 
 ```shell
-./stchaind query distribution validator-outstanding-rewards stvaloper1fmdh9vf262qxe5ehmp9jvgkqzaeye4qmxjrr3k --height=9765
+stchaind query distribution validator-outstanding-rewards stvaloper1fmdh9vf262qxe5ehmp9jvgkqzaeye4qmxjrr3k --height=9765
 ```
 
 <br>
@@ -488,7 +493,7 @@ Example:
 Example:
 
 ```shell
-./stchaind query distribution community-pool --height=9765
+stchaind query distribution community-pool --height=9765
 ```
 
 <br>
@@ -498,12 +503,12 @@ Example:
 Example:
 
 ```shell
-./stchaind query distribution slashes stvaloper1095s2f3m60qz48spy3wr52gw8xmy7xqywnxnrq 0 500
+stchaind query distribution slashes stvaloper1095s2f3m60qz48spy3wr52gw8xmy7xqywnxnrq 0 500
 ``` 
 
 <br>
 
-### [`slashing` module](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-%60stchaind%60-Commands(part1)#slashing-module)
+### - `slashing` module
 
 Responsible for enabling Stratos Chain to penalize any validator for an attributable violation of protocol rules by slashing (i.e. partially destroying) the bonded tokens. We usually use `unjail` command to un-jail a validator and Information about validator's liveness activity is tracked through `signing-info`.
 
@@ -514,7 +519,7 @@ Responsible for enabling Stratos Chain to penalize any validator for an attribut
 Example:
 
 ```shell
-./stchaind tx slashing unjail --from=st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda \
+stchaind tx slashing unjail --from=st1fmdh9vf262qxe5ehmp9jvgkqzaeye4qm372rda \
 --chain-id=tropos-5 --keyring-backend=test --gas=auto --gas-prices=1000000000wei -y
 ``` 
 
@@ -525,15 +530,15 @@ Example:
 Example:
 
 ```shell
-./stchaind query slashing signing-info stvalconspub1zcjduepqsnwlx7rv0ghyvh9tm99zle39df99jt8hccwt8jdrvjs26zqrzh9shdmgyc
+stchaind query slashing signing-info stvalconspub1zcjduepqsnwlx7rv0ghyvh9tm99zle39df99jt8hccwt8jdrvjs26zqrzh9shdmgyc
 ``` 
 
 You can find all detailed explanations at
 
-* [Stratos-chain 'stchaind' Commands(part1)](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-%60stchaind%60-Commands(part1))
-* [Stratos-chain 'stchaind' Commands(part2)](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-%60stchaind%60-Commands(part2))
-* [Stratos-chain REST APIs](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-REST-APIs)
-* [Stratos-Chain gRPC Queries](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-gRPC-Queries)
+* [Stratos-chain 'stchaind' Commands(part1)](../stchaind-commands-part-1)
+* [Stratos-chain 'stchaind' Commands(part2)](../stchaind-commands-part-2)
+* [Stratos-chain REST APIs](../stratos-chain-rest-apis)
+* [Stratos-Chain gRPC Queries](../stratos-chain-grpc-queries)
 
 <br>
 
@@ -582,8 +587,9 @@ In addition, since we limited the number of active validators to the most staked
 The minimum stake of an `active` validator(stake of the 100th validator) can can be found at [`Stratos Exporer`](https://explorer-tropos.thestratos.org/).
 
 To solve this problem, you can get more tokens delegated until the total stake of your validator is more than the minimum stake of an `active` validator using the following command
+
 ```shell
-./stchaind tx staking delegate <validator-addr> <amount> \
+stchaind tx staking delegate <validator-addr> <amount> \
 --from=<name|address of private key> \
 --chain-id=<current chain-id> \
 --keyring-backend=<keyring's backend'> \
@@ -599,7 +605,7 @@ The shares of the validator are `unbonded` in order to not affecting the running
 If this happens, check your validator information and see if your validator was jailed by sending the following command.
 
   ```shell
-  ./stchaind query staking validator <validator_operator_address>
+  stchaind query staking validator <validator_operator_address>
   ...
   jailed: true
   status: 1
@@ -622,7 +628,7 @@ This means the validator is `jailed` and the validator status is `unbonding`.
 
 Except for `double-sign`, you have to wait for your node finishes catch-up and wait at least 10 minutes(downtime jail duration).
 
-Then, you can [unjail your validator](https://github.com/stratosnet/stratos-chain/wiki/Stratos-Chain-%60stchaind%60-Commands(part1)#-unjail).
+Then, you can [unjail your validator](../stchaind-commands-part-1/#-unjail).
 
 Finally, check your validator again to see if the validator's voting-power is back.
 
@@ -638,7 +644,7 @@ There are three ways to check it:
 * `status` command:
 
 ```shell
-./stchaind status
+stchaind status
 ```
 
 Response:

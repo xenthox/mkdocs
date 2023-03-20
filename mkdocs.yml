@@ -46,10 +46,11 @@ nav:
     - Operating:
       - ppd Commands: docs-resource-node/ppd-terminal-subcommands.md
       - SDS RPC: docs-resource-node/sds-rpc-for-file-operation.md
+      - RPC Client: docs-resource-node/rpc-client.md
 
 plugins:
   - search
-#  - social
+  - social
 
 extra:
   social:

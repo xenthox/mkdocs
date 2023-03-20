@@ -80,7 +80,7 @@ Using the same mnemonic(recommended)
 - Recover your account with the same mnemonic, i.e.,
 
 ```shell
-./stchaind keys add ethUser0 --recover --chain-id=tropos-5 --keyring-backend=test --hd-path="m/44'/606'/0'/0/0"
+stchaind keys add ethUser0 --recover --chain-id=tropos-5 --keyring-backend=test --hd-path="m/44'/606'/0'/0/0"
 ```
 
 Result:
@@ -108,7 +108,7 @@ This method uses `stchaind keys` commands to convert your old `secp256k1` accoun
 - Export `cosmosUser0`
     
 ```shell
-./stchaind keys export cosmosUser0 --keyring-backend=test --unsafe --unarmored-hex
+stchaind keys export cosmosUser0 --keyring-backend=test --unsafe --unarmored-hex
 ```
 
 Result:
@@ -122,7 +122,7 @@ WARNING: The private key will be exported as an unarmored hexadecimal string. US
 - Delete the old `cosmosUser0` account
       
 ```shell
-./stchaind keys delete cosmosUser0 --keyring-backend=test 
+stchaind keys delete cosmosUser0 --keyring-backend=test 
 ```
 
 <br>
@@ -130,7 +130,7 @@ WARNING: The private key will be exported as an unarmored hexadecimal string. US
 - Unsafe-import-eth-key `ethUser0`
       
 ```shell
-./stchaind keys unsafe-import-eth-key ethUser0 18132eae6f96851959d2787aab9f018d9cfe977c619ee951490c6a1c692f2783 --keyring-backend=test
+stchaind keys unsafe-import-eth-key ethUser0 18132eae6f96851959d2787aab9f018d9cfe977c619ee951490c6a1c692f2783 --keyring-backend=test
 ```
 
 Result:
@@ -153,7 +153,7 @@ Enter passphrase to encrypt your key:   ## if you are using `--keyring-backend=t
 - Confirm account conversion
 
 ```shell
-./stchaind keys list --keyring-backend=test
+stchaind keys list --keyring-backend=test
 ```
 
 Result:
@@ -188,7 +188,7 @@ curl --header "Content-Type: application/json" --request POST --data '{"denom":"
 - Start the chain and wait for full synchronization
 
  ```shell
- ./stchaind start
+ stchaind start
  ```
 
 <br>
@@ -200,7 +200,7 @@ curl --header "Content-Type: application/json" --request POST --data '{"denom":"
 - Check the balance in the new `ethsecp256k1` account
 
 ```shell
-./stchaind query bank balances <your new `ethsecp256k1` account address>
+stchaind query bank balances <your new `ethsecp256k1` account address>
 ```
 
 The response to this command determines if your account has been migrated automatically. For example,
@@ -210,7 +210,7 @@ The response to this command determines if your account has been migrated automa
 ### With a balance of _utros_
 
 ``` { .yaml .no-copy }
-./stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
+stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
 balances:
 - amount: "233606"
   denom: utros
@@ -232,7 +232,7 @@ balances:
 ### Without a balance of _utros_
   
 ``` { .yaml .no-copy }
-./stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
+stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
 balances:
 - amount: "10000000000000000000"
   denom: wei
@@ -297,7 +297,7 @@ Response Example:
 - Withdraw mature reward from `secp256k1` account to the new corresponding `ethsecp256k1` account using `legacy-withdraw` command
 
 ```shell
-./stchaind tx pot legacy-withdraw --target-address=st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4 --from=st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4 --amount=100utros --chain-id=tropos-5 --keyring-backend=test --gas=1000000 --gas-prices=1000000000wei -y
+stchaind tx pot legacy-withdraw --target-address=st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4 --from=st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4 --amount=100utros --chain-id=tropos-5 --keyring-backend=test --gas=1000000 --gas-prices=1000000000wei -y
 ```
 
 <br>
@@ -305,7 +305,7 @@ Response Example:
 - Check the balance in the new `ethsecp256k1` account again
 
 ``` { .yaml .no-copy }
- ./stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
+ stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
   balances:
    - amount: "100"
      denom: utros

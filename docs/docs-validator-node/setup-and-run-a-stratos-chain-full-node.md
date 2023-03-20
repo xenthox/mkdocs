@@ -224,7 +224,7 @@ make install
 cd $HOME
     
 # Create folders and initialize the node
-./stchaind init "<your_node_moniker>"
+stchaind init "<your_node_moniker>"
     
 # ignore the output since you need to download the genesis file 
 ```
@@ -754,7 +754,7 @@ Please choose ONE of them to start the node.
 cd $HOME
 
 # run your node
-./stchaind start
+stchaind start
 
 # Use `Ctrl+c` to stop the node.
 ```
@@ -769,7 +769,7 @@ cd $HOME
 cd $HOME
 
 # run your node in backend
-./stchaind start 2>&1 >> chain.log & 
+stchaind start 2>&1 >> chain.log & 
 ```
 
 Use an editor to check your node log at `chain.log`
@@ -863,13 +863,13 @@ Once you start your full-node, it will connect to the peers and start syncing. Y
 
 ```shell
 # Check the status of the node
-./stchaind status
+stchaind status
 ```
 
 The output will be similar to
 
 ```json
-./stchaind status
+stchaind status
 {
     "NodeInfo": {
         "protocol_version": {
@@ -936,7 +936,7 @@ In order to hold the tokens that you will later delegate to your validator node,
 To create a new wallet account, type the following command
 
 ```shell
-./stchaind keys add <your wallet name> --hd-path="m/44'/606'/0'/0/0" --keyring-backend=<keyring's backend>
+stchaind keys add <your wallet name> --hd-path="m/44'/606'/0'/0/0" --keyring-backend=<keyring's backend>
 ```
 
 !!! tip
@@ -952,7 +952,7 @@ In addition, you will have a secret recovery phrase(mnemonic phrase) which can b
 Example:
 
 ``` { .yaml .no-copy }
-./stchaind keys add myWallet --hd-path="m/44'/606'/0'/0/0" --keyring-backend=test
+stchaind keys add myWallet --hd-path="m/44'/606'/0'/0/0" --keyring-backend=test
 
 - name: myWallet
 type: local
@@ -974,7 +974,7 @@ venue chest pattern tool certain identify adult theme thing public foster promot
 If you already have a Stratos wallet account, you can recover it by typing the following command
 
 ```shell
-./stchaind keys add <your wallet name> --recover --hd-path="m/44'/606'/0'/0/0" --keyring-backend=<keyring's backend> 
+stchaind keys add <your wallet name> --recover --hd-path="m/44'/606'/0'/0/0" --keyring-backend=<keyring's backend> 
 ```
 
 !!! tip
@@ -983,7 +983,7 @@ If you already have a Stratos wallet account, you can recover it by typing the f
 Example:
 
 ```shell
-./stchaind keys add myWallet1 --recover --hd-path="m/44'/606'/0'/0/0" --keyring-backend=test  
+stchaind keys add myWallet1 --recover --hd-path="m/44'/606'/0'/0/0" --keyring-backend=test  
 ```
 
 <br>
@@ -1011,13 +1011,13 @@ There are two ways to check your local wallets
 - Check all local wallet accounts
 
 ```shell
-./stchaind keys list --keyring-backend=<keyring's backend> 
+stchaind keys list --keyring-backend=<keyring's backend> 
 ```
 
 Example:
 
 ``` { .yaml .no-copy }
-./stchaind keys list --keyring-backend=test
+stchaind keys list --keyring-backend=test
    - name: user0
      type: local
      address: st16uzr20lx072gexwjuvg94hz3t8y73u4085s9sw
@@ -1050,13 +1050,13 @@ Example:
 - Check a specific local wallet account
 
 ```shell
-./stchaind keys show <your wallet name> --keyring-backend=<keyring's backend> 
+stchaind keys show <your wallet name> --keyring-backend=<keyring's backend> 
 ```
 
 Example:
 
 ``` { .yaml .no-copy }
-./stchaind keys show myWallet1 --keyring-backend=test
+stchaind keys show myWallet1 --keyring-backend=test
    - name: myWallet1
      type: local
      address: st16rzhy6wy2rupydps0gem69y2cnus2j09n42ksx
@@ -1089,13 +1089,13 @@ curl --header "Content-Type: application/json" --request POST --data '{"denom":"
 You can query your account info using this command:
 
 ```shell
-./stchaind query account <your wallet address>
+stchaind query account <your wallet address>
 ```
 
 Example:
 
 ``` { .yaml .no-copy }
-./stchaind query account st1sqzsk8mplv5248gx6dddzzxweqvew8rtst96fx
+stchaind query account st1sqzsk8mplv5248gx6dddzzxweqvew8rtst96fx
 |
 '@type': /cosmos.auth.v1beta1.BaseAccount
 account_number: "1"
@@ -1109,13 +1109,13 @@ sequence: "0"
   You can query your wallet balances using this command:
 
 ```shell
-./stchaind query bank balances <your wallet address>
+stchaind query bank balances <your wallet address>
 ```
 
 Example:
 
 ``` { .yaml .no-copy }
-./stc./stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
+stchaind query bank balances st1d3qtsjyypa639q9kf0wmuf2dn4a7zrnujw84q4
 |
 balances:
 - amount: "200"
@@ -1135,7 +1135,7 @@ total: "0
  This tx command will send an amount of tokens from one wallet address to another:
 
  ```shell
- ./stchaind tx bank send <from address> <to address> <amount> --keyring-backend=<keyring's backend> --chain-id=<current chain-id> --gas=auto --gas-prices=1000000000wei
+ stchaind tx bank send <from address> <to address> <amount> --keyring-backend=<keyring's backend> --chain-id=<current chain-id> --gas=auto --gas-prices=1000000000wei
  ```
  
 !!! tip
@@ -1154,7 +1154,7 @@ Let us assume:
 * `amount`: 10stos
 
 ``` { .yaml .no-copy }
-./stchaind tx bank send st1dz20dmhjkuc2tur3amgl8t45w807a640leh8p0 st123wun5lnwerdrt0mk2uxtusgawpfr228a0sseg 10stos --chain-id=tropos-5  --keyring-backend=test --gas=100000 --gas-prices=1000000000wei -y
+stchaind tx bank send st1dz20dmhjkuc2tur3amgl8t45w807a640leh8p0 st123wun5lnwerdrt0mk2uxtusgawpfr228a0sseg 10stos --chain-id=tropos-5  --keyring-backend=test --gas=100000 --gas-prices=1000000000wei -y
 code: 0
 codespace: ""
 data: ""
