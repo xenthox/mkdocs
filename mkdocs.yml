@@ -25,7 +25,11 @@ theme:
       accent: teal
 
 nav:
-  - Home: index.md
+  - About:
+    - Welcome: index.md
+    - About Stratos: docs-about/about-stratos.md
+    - STOS Token Metrics: docs-about/stratos-token-metrics.md
+    - STOS Token Economy: docs-about/stratos-token-economy.md
   - Testnet:
     - Introduction: docs-testnet/introduction.md
     - Changes in Tropos-5: docs-testnet/tropos-5-changes.md
@@ -46,11 +50,12 @@ nav:
     - Operating:
       - ppd Commands: docs-resource-node/ppd-terminal-subcommands.md
       - SDS RPC: docs-resource-node/sds-rpc-for-file-operation.md
+    - Examples:
       - RPC Client: docs-resource-node/rpc-client.md
 
 plugins:
   - search
-  - social
+#  - social
 
 extra:
   social:
@@ -87,10 +92,16 @@ markdown_extensions:
   - admonition
   - meta
   - tables
+  - pymdownx.arithmatex:
+      generic: true
 
 extra_css:
   - css/extra.css
 extra_javascript:
-  - js/extra.js        
+  - js/extra.js
+  - js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    
 
 copyright: <p> &copy; 2021-<script>document.write(new Date().getFullYear())</script> Stratos</p>

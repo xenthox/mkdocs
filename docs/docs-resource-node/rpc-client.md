@@ -402,6 +402,8 @@ Response:
 ``` { .yaml .no-copy }
 [INFO] 2023/03/20 12:14:17 main.go:179: - start uploading the file: /home/user/tmp/100MB.zip
 [INFO] 2023/03/20 12:14:17 main.go:187: - request uploading file (method: user_requestUpload)
+[INFO] 2023/03/20 12:14:33 main.go:212: - received response (return: UPLOAD_DATA)
+[INFO] 2023/03/20 12:14:33 main.go:225: - request upload date (method: user_uploadData)
 [INFO] 2023/03/20 12:14:32 main.go:244: - uploading is done
 ```
 
@@ -503,7 +505,10 @@ rpc_client share v05ahm500bfpivst07iti9krii5llj608mduoo82 \
 Response:
 
 ``` { .yaml .no-copy }
-...
+[INFO] 2023/03/24 13:00:01 main.go:957: - request sharing file (method: user_requestShare)
+[INFO] 2023/03/24 13:00:03 main.go:976: - received response (return: SUCCESS)
+ShareId:  78912f5d9bbe939r
+ShareLink:  VzW5KW_78912f5d9bbe939r
 ```
 
 <br>

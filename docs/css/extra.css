@@ -107,3 +107,15 @@
     margin-left: 2.4rem !important;
   }
 }
+
+/* Table 100% width */
+
+.md-typeset__table {
+   min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+    display: table;
+}
+
+green { color: #00ccb8 }
