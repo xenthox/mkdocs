@@ -22,7 +22,7 @@ Initial Market Price: 0.3 USD
 
 ## Token Allocation by Percent
 
-![STOS Token Allocation](../../assets/stratos-token-allocation.png)
+![STOS Token Allocation](../assets/stratos-token-allocation.png)
 
 Our total strategic sale (consisting of 1 seed and 2 private sale rounds) is 20% of all our tokens. The initial sale will be used for our technology development, community building, partnerships, and marketing to build out Stratos Decentralized Data Mesh.
 
