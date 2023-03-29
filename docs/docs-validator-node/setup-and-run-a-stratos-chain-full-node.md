@@ -224,7 +224,7 @@ make install
 cd $HOME
     
 # Create folders and initialize the node
-stchaind init "<your_node_moniker>"
+stchaind init "<your_node_moniker>" --chain-id tropos-5
     
 # ignore the output since you need to download the genesis file 
 ```
